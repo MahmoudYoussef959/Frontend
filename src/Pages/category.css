@@ -1,0 +1,72 @@
+.category {
+    position: relative;
+    
+    padding: 20px;
+}
+h1{
+  margin-top: 100px;
+  margin-left: 200px;
+}
+
+.women-items {
+    display: grid;                
+    grid-template-columns: repeat(3, 1fr);
+    gap: 200px;
+    padding: 20px;
+    margin-left: 200px;
+    
+  }
+  .productCard{
+    padding-left: 200px;
+    transition:1s;
+  }
+  .product-card:hover {
+    transform: scale(1.05);
+    transition: transform 1s;
+    .circleCartButton {
+      display: block;
+    }
+  }
+
+  .category img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .circleCartButton {
+    display: none;
+    position: relative;
+    bottom: 150px; 
+    left: 240px;
+    background: none;
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    padding: 0; /* Remove any padding */
+    border: none; /* Remove any border */
+    z-index: 2000; /* Ensure the button is above the image */
+    object-fit: cover
+    ;
+}
+
+.circleCartButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fits within the button */
+    z-index: 1; /* Ensure the image is above the circle */
+}
+
+  @media (max-width: 768px) {
+    .product-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product-container {
+      grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+  }
+
+ 

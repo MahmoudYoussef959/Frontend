@@ -1,0 +1,83 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.header-logo img {
+    height: 40px;
+}
+.cart-icon{
+    margin-right: 250px;
+    background: none;
+    border-radius: 100%;
+    position: relative;
+}
+.cart-icon img {
+    height: 30px; 
+}
+
+.cartCounter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -1px;
+    right: -5px;
+    background-color: black;
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    font-size: 15px;
+}
+
+.header-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-menu li {
+    display: inline-block;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 40px;
+    position: relative;
+    cursor: pointer; /* Change cursor to pointer on hover */
+    padding-bottom: 10px; /* Space between the text and the line */
+}
+
+.header-menu li p {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.header-menu hr {
+    border: none;
+    display: block;
+    width: 0%; /* Initially, set the width to 0 */
+    height: 2px; /* Adjust height of the line */
+    background-color: rgb(5, 199, 5);
+    position: absolute;
+    bottom: -5px; /* Position the line just below the <p> */
+    left: 0;
+    transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition for width and opacity */
+    opacity: 0; /* Start with hidden line */
+}
+
+.header-menu li:hover hr,
+.header-menu li hr {
+    opacity: 1; /* Make the line visible when the item is active */
+    width: 100%; /* Ensure full width */
+}
