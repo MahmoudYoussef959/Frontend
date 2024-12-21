@@ -9,69 +9,38 @@ import productImage6 from './Assets/productImage6.png';
 import circleCart from './Assets/circleCart.png';  // Add your cart icon image here
 
 const Category = () => {
-    const navigate = useNavigate();
-    const productName = "Running Short";
-    const price = 50.00;
+  const navigate = useNavigate();
 
-    const handleCardClick = () => {
-        navigate('/pdp');
-    };
-    const handleCardClick2 = () => {
-        navigate('/pdp2');
-    };
-    const handleCardClick3 = () => {
-        navigate('/pdp3');
-    };
-    const handleCardClick4 = () => {
-        navigate('/pdp4');
-    };
-    const handleCardClick6 = () => {
-        navigate('/pdp6');
-    };
+  const products = [
+    { id: '1', name: 'Running Shorts', image: productImage1, price: 50.00 },
+    { id: '2', name: 'Running Shoes', image: productImage2, price: 120.00 },
+    { id: '3', name: 'Sports Jacket', image: productImage3, price: 80.00 },
+    { id: '4', name: 'Yoga Pants', image: productImage4, price: 60.00 },
+    { id: '1', name: 'Fitness Tracker', image: productImage1, price: 150.00 },
+    { id: '6', name: 'Water Bottle', image: productImage6, price: 20.00 }
+  ];
 
-    return (
-        <div className='category'>
-            <h1>Women</h1>
-            <div className='women-items'>
-                <div className='product-card' onClick={handleCardClick}>
-                    <img src={productImage1} alt={productName} className="product-image" />
-                    <h2 className="product-name">{productName}</h2>
-                    <p className="product-price">${price}</p>
-                    <button className='circleCartButton'><img src={circleCart} alt="Add to Cart" className="circleCart" /></button>
-                </div>
-                <div className='product-card' onClick={handleCardClick2}>
-                    <img src={productImage2} alt={productName} className="product-image" />
-                    <h2 className="product-name">{productName}</h2>
-                    <p className="product-price">${price}</p>
-                    <button className='circleCartButton'><img src={circleCart} alt="Add to Cart" className="circleCart" /></button>
-                </div>
-                <div className='product-card' onClick={handleCardClick3}>
-                    <img src={productImage3} alt={productName} className="product-image" />
-                    <h2 className="product-name">{productName}</h2>
-                    <p className="product-price">${price}</p>
-                    <button className='circleCartButton'><img src={circleCart} alt="Add to Cart" className="circleCart" /></button>
-                </div>
-                <div className='product-card' onClick={handleCardClick4}>
-                    <img src={productImage4} alt={productName} className="product-image" />
-                    <h2 className="product-name">{productName}</h2>
-                    <p className="product-price">${price}</p>
-                    <button className='circleCartButton'><img src={circleCart} alt="Add to Cart" className="circleCart" /></button>
-                </div>
-                <div className='product-card' onClick={handleCardClick}>
-                    <img src={productImage1} alt={productName} className="product-image" />
-                    <h2 className="product-name">{productName}</h2>
-                    <p className="product-price">${price}</p>
-                    <button className='circleCartButton'><img src={circleCart} alt="Add to Cart" className="circleCart" /></button>
-                </div>
-                <div className='product-card' onClick={handleCardClick6}>
-                    <img src={productImage6} alt={productName} className="product-image" />
-                    <h2 className="product-name">{productName}</h2>
-                    <p className="product-price">${price}</p>
-                    <button className='circleCartButton'><img src={circleCart} alt="Add to Cart" className="circleCart" /></button>
-                </div>
-            </div>
-        </div>
-    );
-}
+  const handleCardClick = (productId) => {
+    navigate(`/pdp/${productId}`);
+  };
+
+  return (
+    <div className='category'>
+      <h1>Women</h1>
+      <div className='women-items'>
+        {products.map((product) => (
+          <div className='product-card' key={product.id} onClick={() => handleCardClick(product.id)}>
+            <img src={product.image} alt={product.name} className="product-image" />
+            <h2 className="product-name">{product.name}</h2>
+            <p className="product-price">${product.price}</p>
+            <button className='circleCartButton'>
+              <img src={circleCart} alt="Add to Cart" className="circleCart" />
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 export default Category;

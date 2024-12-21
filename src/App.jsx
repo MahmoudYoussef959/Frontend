@@ -12,7 +12,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Category />} />
-          <Route path="/pdp" element={<PDP />} />
+          <Route path="/pdp/:productId" element={<PDP />} /> {/* Dynamic path */}
         </Routes>
       </Router>
     </div>

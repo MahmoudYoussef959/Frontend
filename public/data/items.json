@@ -1,0 +1,55 @@
+[
+  {
+    "id": "1",
+    "name": "Running Shorts",
+    "description": "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+    "price": 50.00,
+    "images": ["/data/images/productImage1.png", "/data/images/productImage1.png", "/data/images/productImage1.png", "/data/images/productImage1.png", "/data/images/productImage1.png"],
+    "colors": ["gray", "black", "green"],
+    "sizes": ["XS", "S", "M", "L"]},
+  {
+    "id": "2",
+    "name": "Running Shorts",
+    "description": "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+    "price": 50.00,
+    "images": ["/data/images/productImage2.png", "/data/images/productImage2.png", "/data/images/productImage2.png", "/data/images/productImage2.png", "/data/images/productImage2.png"],
+    "colors": ["Orange", "Silver", "Gold"],
+    "sizes": ["XS", "S", "M" ]
+  },
+  {
+    "id": "3",
+    "name": "Running Shorts",
+    "description": "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+    "price": 50.00,
+    "images": ["/data/images/productImage3.png", "/data/images/productImage3.png", "/data/images/productImage3.png", "/data/images/productImage3.png", "/data/images/productImage3.png"],
+    "colors": ["gray", "black", "Red"],
+    "sizes": ["XS", "S", "XL"]
+  },
+  {
+    "id": "4",
+    "name": "Running Shorts",
+    "description": "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+    "price": 50.00,
+    "images": ["/data/images/productImage4.png", "/data/images/productImage4.png", "/data/images/productImage4.png", "/data/images/productImage4.png", "/data/images/productImage4.png"],
+    "colors": ["gray", "black", "Yellow"],
+    "sizes": ["XS", "S", "M", "XL"]
+  },
+  {
+    "id": "5",
+    "name": "Running Shorts",
+    "description": "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+    "price": 50.00,
+    "images": ["/data/images/productImage5.png", "/data/images/productImage5.png", "/data/images/productImage5.png", "/data/images/productImage5.png", "/data/images/productImage5.png"],
+    "colors": ["gray", "Orange", "Gray"],
+    "sizes": ["S", "M", "XXXL"]
+  },
+  {
+    "id": "6",
+    "name": "Running Shorts",
+    "description": "Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.",
+    "price": 50.00,
+    "images": ["/data/images/productImage6.png", "/data/images/productImage6.png", "/data/images/productImage6.png", "/data/images/productImage6.png", "/data/images/productImage6.png"],
+    "colors": ["gray", "black", "green"],
+    "sizes": [ "M", "XXL"]
+  }
+]
