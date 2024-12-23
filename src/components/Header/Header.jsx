@@ -9,15 +9,24 @@ const Header = () => {
     return (
         <div className="header">
             <ul className="header-menu">
-                <li onClick={() => setMenu("women")}>
+                <li 
+                    onClick={() => setMenu("women")}
+                    data-testid={menu === "women" ? "active-category-link" : "category-link"}
+                >
                     <p>Women</p>
                     {menu === "women" && <hr />}
                 </li>
-                <li onClick={() => setMenu("men")}>
+                <li 
+                    onClick={() => setMenu("men")}
+                    data-testid={menu === "men" ? "active-category-link" : "category-link"}
+                >
                     <p>Men</p>
                     {menu === "men" && <hr />}
                 </li>
-                <li onClick={() => setMenu("kids")}>
+                <li 
+                    onClick={() => setMenu("kids")}
+                    data-testid={menu === "kids" ? "active-category-link" : "category-link"}
+                >
                     <p>Kids</p>
                     {menu === "kids" && <hr />}
                 </li>

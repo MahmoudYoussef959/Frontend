@@ -1,39 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './PDP.css'; // Ensure you have the necessary styles
+import './PDP.css';
 
 const PDP = () => {
-  const { productId } = useParams(); // Get the productId from the URL params
+  const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
 
-  // Fetch product data from the JSON file
+  // Fetch product data
   useEffect(() => {
     const fetchProductData = async () => {
       try {
-        console.log('Fetching product data...');
-        console.log('Product ID:', productId);
-        const response = await fetch('/data/items.json'); // Correct path
+        const response = await fetch('/data/items.json');
         const data = await response.json();
-        console.log('Fetched data:', data);
         const productData = data.find(item => item.id === productId);
-        console.log('Product Data:', productData);
         setProduct(productData);
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching product data:', error);
-        setLoading(false); // Set loading to false in case of error
+        setLoading(false);
       }
     };
 
     fetchProductData();
   }, [productId]);
 
-  // Update selectedImage and currentIndex when product data is fetched
   useEffect(() => {
     if (product && product.images) {
       setSelectedImage(product.images[0]);
@@ -42,13 +36,14 @@ const PDP = () => {
   }, [product]);
 
   if (loading) {
-    return <div>Loading...</div>; // Display loading message while fetching data
+    return <div>Loading...</div>;
   }
 
   if (!product) {
-    return <div>Product not found</div>; // Display message if product is not found
+    return <div>Product not found</div>;
   }
 
+  // Handling previous and next image carousel functionality
   const handlePrev = () => {
     const newIndex = currentIndex === 0 ? product.images.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
@@ -61,19 +56,22 @@ const PDP = () => {
     setSelectedImage(product.images[newIndex]);
   };
 
+  // Disable Add to Cart button until size and color are selected
+  const isAddToCartDisabled = !selectedSize || !selectedColor;
+
   return (
     <div className="pdp">
       <div className="pdp-left">
-        {/* Image Thumbnails (Smaller images on the left) */}
-        <div className="image-thumbnails">
-          {Array.from({ length: 5 }).map((_, index) => (
+        {/* Image Thumbnails */}
+        <div className="image-thumbnails" data-testid="product-gallery">
+          {product.images.map((img, index) => (
             <img
               key={index}
-              src={product.images[index % product.images.length]} // Repeat the images
+              src={img}
               alt={`Product ${index + 1}`}
               className={`thumbnail ${index === currentIndex ? 'active' : ''}`}
               onClick={() => {
-                setSelectedImage(product.images[index % product.images.length]);
+                setSelectedImage(img);
                 setCurrentIndex(index);
               }}
             />
@@ -89,31 +87,60 @@ const PDP = () => {
       </div>
       <div className="product-details">
         <h2>{product.name}</h2>
-        <div className="size">
+
+        {/* Product Attributes */}
+        <div className="size" data-testid="product-attribute-size">
           <h4>SIZE:</h4>
-          {product.sizes.map((size, index) => (
-            <button key={index} onClick={() => setSelectedSize(size)} className={selectedSize === size ? 'selected' : ''}>
-              {size}
-            </button>
-          ))}
+          <div className="size-selection">
+            {product.sizes.map((size, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedSize(size)}
+                className={selectedSize === size ? 'selected' : ''}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="color">
+
+        <div className="color" data-testid="product-attribute-color">
           <h4>COLOR:</h4>
-          {product.colors.map((color, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedColor(color)}
-              className={selectedColor === color ? 'selected' : ''}
-              style={{ backgroundColor: color, border: 'none', width: '50px', height: '50px', gap: '10px' }}
-            />
-          ))}
+          <div className="color-selection">
+            {product.colors.map((color, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedColor(color)}
+                className={selectedColor === color ? 'selected' : ''}
+                style={{
+                  backgroundColor: color,
+                  border: 'none',
+                  width: '50px',
+                  height: '50px',
+                }}
+              />
+            ))}
+          </div>
         </div>
-        <div className="price">
+
+        {/* Product Price */}
+        <div className="price" data-testid="product-price">
           <h4>PRICE:</h4>
-          <p className="price-value">${product.price}</p>
+          <p className="price-value">${product.price.toFixed(2)}</p>
         </div>
-        <button className="add-to-cart-btn">Add to Cart</button>
-        <div className="product-description">
+
+        {/* Add to Cart Button */}
+        <button
+          className="add-to-cart-btn"
+          data-testid="add-to-cart"
+          disabled={isAddToCartDisabled}
+          onClick={() => console.log('Product added to cart')}
+        >
+          Add to Cart
+        </button>
+
+        {/* Product Description */}
+        <div className="product-description" data-testid="product-description">
           <h2>{product.description}</h2>
         </div>
       </div>
